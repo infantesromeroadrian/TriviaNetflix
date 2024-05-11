@@ -1,5 +1,7 @@
 // Creamos un nuevo Json con nuevas preguntas acerca de netflix separandolas por categorias de series o peliculas
 
+// Preguntas de prueba
+
 const preguntas = [
     {
         id: 1,
@@ -504,108 +506,93 @@ const preguntas = [
 ];
 
 
-//tomamos los elementos html
-const txtPuntaje = document.querySelector("#puntos");
-const nombre = document.querySelector("#nombre");
-
-nombre.innerHTML = localStorage.getItem("nombre");
-let numPreguntaActual = 0;
-
-//Recupero el puntaje en caso que ya este jugando
-let puntajeTotal = 0;
-if(!localStorage.getItem("puntaje-total")){
-    puntajeTotal = 0;
-    txtPuntaje.innerHTML = puntajeTotal
-}else{
-    puntajeTotal = parseInt(localStorage.getItem("puntaje-total"));
-    txtPuntaje.innerHTML = puntajeTotal;
-}
-
-//cargar las preguntas del tema que eligió
-const categoriaActual = localStorage.getItem("categoria-actual");
-const preguntasCategoria = preguntas.filter(pregunta => pregunta.categoria === categoriaActual);
-
-function cargarSiguientePregunta(num){
-    //tomo los elementos donde se cargaran los datos de la pregunta
-    const numPregunta = document.querySelector("#num-pregunta");
+// Tomamos los elementos HTML
+document.addEventListener("DOMContentLoaded", function() {
+    const txtPuntaje = document.querySelector("#puntos");
+    const nombreJugador = document.querySelector("#nombre");
     const txtPregunta = document.querySelector("#txt-pregunta");
-    const opcionA = document.querySelector("#a");
-    const opcionB = document.querySelector("#b");
-    const opcionC = document.querySelector("#c");
-    const opcionD = document.querySelector("#d");
+    const opcionesBtns = {
+        a: document.querySelector("#a"),
+        b: document.querySelector("#b"),
+        c: document.querySelector("#c"),
+        d: document.querySelector("#d")
+    };
+    const btnSiguiente = document.querySelector("#siguiente");
+    const numPregunta = document.querySelector("#num-pregunta"); // Selector para el número de la pregunta
 
-    numPregunta.innerHTML = num + 1;
-    txtPregunta.innerHTML = preguntasCategoria[num].titulo;
-    opcionA.innerHTML = preguntasCategoria[num].opcionA;
-    opcionB.innerHTML = preguntasCategoria[num].opcionB;
-    opcionC.innerHTML = preguntasCategoria[num].opcionC;
-    opcionD.innerHTML = preguntasCategoria[num].opcionD;
+    // Configurar el nombre del jugador y el puntaje inicial
+    nombreJugador.textContent = localStorage.getItem("nombre") || 'Jugador Anónimo';
+    let puntajeTotal = parseInt(localStorage.getItem("puntaje-total")) || 0;
+    txtPuntaje.textContent = puntajeTotal;
 
-    
+    let preguntasFiltradas = [];
+    let indicePreguntaActual = 0;
 
-    //Agrego un eventlistener a cada boton de respuesta
-    const botonesRespuesta = document.querySelectorAll(".opcion");
-    //Quito los eventListen y las clases
-    botonesRespuesta.forEach(opcion=>{
-        opcion.removeEventListener("click", (e)=>{});
-        opcion.classList.remove("correcta");
-        opcion.classList.remove("incorrecta");
-        opcion.classList.remove("no-events");
-    })
-
-    botonesRespuesta.forEach(opcion=>{
-        opcion.addEventListener("click", agregarEventListenerBoton);
-    })
-
-    txtPuntaje.classList.remove("efecto");
-}
-
-function agregarEventListenerBoton(e){
-    console.log(e.currentTarget.id);
-    console.log(numPreguntaActual);
-    console.log(preguntas[numPreguntaActual].correcta);
-    //Controlo si la respuesta es correcta
-    if(e.currentTarget.id === preguntasCategoria[numPreguntaActual].correcta){
-        e.currentTarget.classList.add("correcta");
-        puntajeTotal = puntajeTotal + 100;
-        txtPuntaje.innerHTML = puntajeTotal;
-        localStorage.setItem("puntaje-total", puntajeTotal);
-        txtPuntaje.classList.add("efecto");
-    }else{
-        e.currentTarget.classList.add("incorrecta");
-        const correcta = document.querySelector("#"+preguntasCategoria[numPreguntaActual].correcta);
-        correcta.classList.add("correcta");
+    // Función para cargar preguntas desde un archivo JSON
+    function cargarPreguntasDesdeJSON() {
+        fetch('/data/PreguntasYRespuestas.json')
+            .then(response => response.json())
+            .then(data => {
+                const categoriaActual = localStorage.getItem("categoria-actual");
+                preguntasFiltradas = data.filter(pregunta => pregunta.categoria === categoriaActual);
+                preguntasFiltradas = mezclarPreguntas(preguntasFiltradas).slice(0, 10); // Tomar solo 10 preguntas aleatorias
+                cargarPregunta();
+            })
+            .catch(error => console.error('Error al cargar las preguntas:', error));
     }
-    //Agrego un eventlistener a cada boton de respuesta
-    const botonesRespuesta = document.querySelectorAll(".opcion");
-    //Quito los eventListen para que no pueda seguir haciendo clic
-    console.log(botonesRespuesta)
-    botonesRespuesta.forEach(opcion=>{
-        opcion.classList.add("no-events");
-    })
-}
 
-cargarSiguientePregunta(numPreguntaActual);
-
-//tomo el boton siguiente
-const btnSiguiente = document.querySelector("#siguiente")
-btnSiguiente.addEventListener("click",()=>{
-    numPreguntaActual++;
-    if(numPreguntaActual<=4){
-        cargarSiguientePregunta(numPreguntaActual);
-    }
-    else{
-        const categoriasJugadasLS = JSON.parse(localStorage.getItem("categorias-jugadas"));
-       
-        console.log(categoriasJugadasLS.length);
-        if(parseInt(categoriasJugadasLS.length) < 6){
-            //alert(categoriasJugadasLS.length);
-            location.href = "menu.html";
-        }else{
-            //lo mando a la pantalla final
-            location.href = "final.html";
+    // Mezclar preguntas para aleatoriedad
+    function mezclarPreguntas(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
-        
+        return array;
     }
-    
-})
+
+    // Cargar una pregunta en la interfaz de usuario
+    function cargarPregunta() {
+        if (indicePreguntaActual < preguntasFiltradas.length) {
+            const preguntaActual = preguntasFiltradas[indicePreguntaActual];
+            txtPregunta.textContent = preguntaActual.titulo;
+            numPregunta.textContent = `${indicePreguntaActual + 1} / ${preguntasFiltradas.length}`; // Actualizar el contador de preguntas
+            Object.keys(opcionesBtns).forEach(key => {
+                opcionesBtns[key].textContent = preguntaActual['opcion' + key.toUpperCase()];
+                opcionesBtns[key].dataset.correcta = preguntaActual.correcta === key;
+                opcionesBtns[key].disabled = false; // Habilitar botón
+                opcionesBtns[key].className = 'opcion'; // Restablecer clase
+            });
+            btnSiguiente.disabled = true; // Deshabilitar el botón siguiente hasta que se responda la pregunta
+        } else {
+            localStorage.setItem("puntaje-total", puntajeTotal);
+            location.href = "final.html"; // Suponiendo que existe una página de resultados finales
+        }
+    }
+
+    // Agregar eventos a las opciones
+    Object.values(opcionesBtns).forEach(boton => {
+        boton.addEventListener("click", function(event) {
+            const esCorrecta = this.dataset.correcta === "true";
+            this.classList.add(esCorrecta ? "correcta" : "incorrecta");
+            if (esCorrecta) {
+                puntajeTotal += 100;
+                txtPuntaje.textContent = puntajeTotal;
+            }
+            Object.values(opcionesBtns).forEach(b => { // Indicar la respuesta correcta y deshabilitar más clics
+                b.disabled = true;
+                if (b.dataset.correcta === "true") {
+                    b.classList.add("correcta");
+                }
+            });
+            btnSiguiente.disabled = false; // Habilitar el botón siguiente
+        });
+    });
+
+    // Botón siguiente
+    btnSiguiente.addEventListener("click", () => {
+        indicePreguntaActual++;
+        cargarPregunta();
+    });
+
+    cargarPreguntasDesdeJSON(); // Iniciar la carga de preguntas
+});

@@ -3,12 +3,14 @@ const nombre = document.querySelector("#nombre");
 const btnComenzar = document.querySelector("#comenzar");
 
 //Agrego un event listener clic al botòn comenzar
-btnComenzar.addEventListener("click",()=>{
-    //seteo los valores del local storage que serán neceasarios en las otras pàginas
+btnComenzar.addEventListener("click", () => {
+    if (nombre.value.trim() === "") {
+        alert("Por favor, ingresa tu nombre.");
+        return;
+    }
     localStorage.setItem("nombre", nombre.value);
-    localStorage.setItem("puntaje-total",0);
+    localStorage.setItem("puntaje-total", 0);
     localStorage.removeItem("categorias-jugadas");
-    
-    //lo redirijo a la parte del menú
-    location.href="menu.html";
-})
+    location.href = "menu.html";
+});
+
