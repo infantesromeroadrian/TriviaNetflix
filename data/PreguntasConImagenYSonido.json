@@ -1,0 +1,222 @@
+[
+    {
+        "id": 51,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/BreakingBad.mp3",
+        "opcionA": "Breaking Bad",
+        "opcionB": "Eleven",
+        "opcionC": "La Casa de Papel",
+        "opcionD": "Ozark",
+        "correcta": "a"
+    },
+    {
+        "id": 52,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/BetterCallSaul.mp3",
+        "opcionA": "Breaking Bad",
+        "opcionB": "Narcos",
+        "opcionC": "Better Call Saul",
+        "opcionD": "Ozark",
+        "correcta": "c"
+    },
+    {
+        "id": 53,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/Bridgerton.mp3",
+        "opcionA": "Outlander",
+        "opcionB": "Bridgerton",
+        "opcionC": "Merlina",
+        "opcionD": "The Crow",
+        "correcta": "b"
+    },
+    {
+        "id": 54,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/Dark.mp3",
+        "opcionA": "La Chica de Nieve",
+        "opcionB": "The Office",
+        "opcionC": "Black Mirror",
+        "opcionD": "Dark",
+        "correcta": "d"
+    },
+    {
+        "id": 55,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/LaCasaDePapel.mp3",
+        "opcionA": "La Casa de Papel",
+        "opcionB": "Mano de Hierro",
+        "opcionC": "Mindhunter",
+        "opcionD": "Riverdale",
+        "correcta": "a"
+    },
+    {
+        "id": 56,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/Merlina.mp3",
+        "opcionA": "Lupin",
+        "opcionB": "Peaky Blinders",
+        "opcionC": "Merlina",
+        "opcionD": "Ozark",
+        "correcta": "c"
+    },
+    {
+        "id": 57,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/TheWalkingDead.mp3",
+        "opcionA": "TheWalkingDead",
+        "opcionB": "Seven Second",
+        "opcionC": "Stranger Things",
+        "opcionD": "Gambito de Dama",
+        "correcta": "a"
+    },
+    {
+        "id": 58,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece esta intro?",
+        "audio": "./assets/mp3/YoSoyBetyLaFea.mp3",
+        "opcionA": "Mesías",
+        "opcionB": "Eleven",
+        "opcionC": "Vis a vis",
+        "opcionD": "Yo soy Bety, la fea",
+        "correcta": "d"
+    },
+     {
+        "id": 59,
+        "categoria": "peliculas",
+        "titulo": "¿A qué película de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Pelis/ACiegas.jpg",
+        "opcionA": "A Ciegas",
+        "opcionB": "Wonder",
+        "opcionC": "A Quiet Place",
+        "opcionD": "Dejar el mundo atrás",
+        "correcta": "a"
+    },
+     {
+        "id": 60,
+        "categoria": "peliculas",
+        "titulo": "¿A qué película de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Pelis/ElIrlandes.jpeg",
+        "opcionA": "Culpable",
+        "opcionB": "Crímenes de Familia",
+        "opcionC": "Hereditary",
+        "opcionD": "El Irlandes",
+        "correcta": "d"
+    },
+     {
+        "id": 61,
+        "categoria": "peliculas",
+        "titulo": "¿A qué película de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Pelis/Imperdonable.jpg",
+        "opcionA": "The Lincoln Lawyer",
+        "opcionB": "Imperdonable",
+        "opcionC": "A Ciegas",
+        "opcionD": "Todo bien",
+        "correcta": "b"
+    },
+     {
+        "id": 62,
+        "categoria": "peliculas",
+        "titulo": "¿A qué película de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Pelis/NoMiresArriba.jpg",
+        "opcionA": "Once Upon a Time in Hollywood",
+        "opcionB": "No Hard Feelings",
+        "opcionC": "No mires arriba",
+        "opcionD": "El Asesino",
+        "correcta": "c"
+    },
+     {
+        "id": 63,
+        "categoria": "peliculas",
+        "titulo": "¿A qué película de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Pelis/ProyectoAdam.jpg",
+        "opcionA": "Bullet Train",
+        "opcionB": "Agente Stone",
+        "opcionC": "Rebel Moon",
+        "opcionD": "ProyectoAdam",
+        "correcta": "d"
+    },
+     {
+        "id": 64,
+        "categoria": "peliculas",
+        "titulo": "¿A qué película de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Pelis/TylerRake.jpg",
+        "opcionA": "The Gray Man",
+        "opcionB": "Hidden Strike",
+        "opcionC": "TylerRake",
+        "opcionD": "6 Underground",
+        "correcta": "c"
+    },
+    {
+        "id": 65,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Series/Arcane.jpg",
+        "opcionA": "Arcane",
+        "opcionB": "Love, Death and Robots",
+        "opcionC": "Castlevania",
+        "opcionD": "Neon Genesis Evangelion",
+        "correcta": "a"
+    },
+     {
+        "id": 66,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Series/AsiNosVen.jpeg",
+        "opcionA": "Engaños",
+        "opcionB": "El problema de los tres cuerpos",
+        "opcionC": "HEl caso Asunta",
+        "opcionD": "Así nos ven",
+        "correcta": "d"
+    },
+     {
+        "id": 67,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Series/BlackMirror.jpg",
+        "opcionA": "Love, Death and Robots",
+        "opcionB": "Black Mirror",
+        "opcionC": "Bebé reno",
+        "opcionD": "Thank you, Next",
+        "correcta": "b"
+    },
+     {
+        "id": 68,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Series/GambitoDeDama.jpg",
+        "opcionA": "Peaky Blinders",
+        "opcionB": "Un cuento perfecto",
+        "opcionC": "Gambito de Dama",
+        "opcionD": "Outlander",
+        "correcta": "c"
+    },
+     {
+        "id": 69,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Series/LaHistoriaDeJeffreyDahmer.jpg",
+        "opcionA": "Black Mirror",
+        "opcionB": "La señal",
+        "opcionC": "You",
+        "opcionD": "Dahmer",
+        "correcta": "d"
+    },
+     {
+        "id": 70,
+        "categoria": "series",
+        "titulo": "¿A qué serie de Netflix pertenece este fotograma?",
+        "imagen": "./assets/Fotogramas/Series/Mindhunter.jpg",
+        "opcionA": "Gambito de Dama",
+        "opcionB": "Así nos ven",
+        "opcionC": "Mindhunter",
+        "opcionD": "¿Quién es Anna",
+        "correcta": "c"
+    }
+    ]
