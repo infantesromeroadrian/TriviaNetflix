@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/estilo.css">
+    <title>TriviaFlix</title>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/img/auris.png" alt="Logotipo de TriviaFlix" class="img">
+        <header>
+            <div class="puntaje">
+                <img src="assets/img/puntos.png" alt="Icono de puntos">
+                <span class="puntos">0</span>
+            </div>
+            <h1>QUIZ</h1>
+            <div class="jugador">
+                <span class="nombre">-</span>
+                <img src="assets/img/user.png" alt="Icono de usuario">
+            </div>
+        </header>
+
+        <!-- PANTALLA DE BIENVENIDA -->
+        <main class="inicio">
+            <h2>Bienvenido!!</h2>
+            <p>Ingresa tu nombre para jugar</p>
+            <input type="text" id="nombre" aria-label="Ingresa tu nombre aquí">
+            <button class="btn" id="comenzar">Comenzar</button>
+        </main>
+    </div>
+
+    <script src="src/js/index.js"></script> <!-- Asumiendo que el archivo se llama index.js y no jsx.js -->
+</body>
+</html>
