@@ -1,62 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/estilo.css">
     <title>Game Quiz</title>
 </head>
-
 <body>
     <div class="container">
-        <img src="assets/img/auris.png" alt="" class="img">
+        <img src="assets/img/auris.png" alt="Logotipo de TriviaFlix" class="img">
         <header>
             <div class="puntaje">
-                <img src="assets/img/puntos.png" alt="">
+                <img src="assets/img/puntos.png" alt="Icono de puntos">
                 <span class="puntos" id="puntos">0</span>
             </div>
             <h1>QUIZ</h1>
             <div class="jugador">
-                <span class="nombre" id="nombre">Martín</span>
-                <img src="assets/img/user.png" alt="">
+                <span class="nombre" id="nombre-jugador">-</span>
+                <img src="assets/img/user.png" alt="Icono de usuario">
             </div>
         </header>
-
-        <!-- SECCIÓN MENU DEL JUEGO -->
         <main class="menu">
-            <h2>Hola <span id="nombre-jugador">Martín</span></h2>
-            <p>Elige una categoría..</p>
+            <h2>Hola <span id="nombre-jugador">-</span></h2>
+            <p>Elige una categoría...</p>
             <div class="categorias">
-                <!-- <div class="categoria" id="general">
-                    <img src="assets/img/general.png" alt="" class="foto-categoria">
-                    <h3>General</h3>
-                </div>
-                <div class="categoria" id="musica">
-                    <img src="assets/img/musica.png" alt="" class="foto-categoria">
-                    <h3>Música</h3>
-                </div> -->
                 <div class="categoria" id="series">
-                    <img src="assets/img/peliculas.png" alt="" class="foto-categoria">
+                    <img src="assets/img/peliculas.png" alt="Icono de series" class="foto-categoria">
                     <h3>Series</h3>
                 </div>
                 <div class="categoria" id="peliculas">
-                    <img src="assets/img/deportes.png" alt="" class="foto-categoria">
+                    <img src="assets/img/deportes.png" alt="Icono de películas" class="foto-categoria">
                     <h3>Películas</h3>
                 </div>
-                <!--  <div class="categoria" id="programacion">
-                    <img src="assets/img/programacion.png" alt="" class="foto-categoria">
-                    <h3>Programación</h3>
-                </div>
-                <div class="categoria" id="juegos">
-                    <img src="assets/img/juegos.png" alt="" class="foto-categoria">
-                    <h3>Video Juegos</h3>
-                </div> -->
             </div>
         </main>
     </div>
-
-    <script src="/src/js/juego.js"></script>
+    <script src="src/js/menu.js"></script>
 </body>
-
 </html>
