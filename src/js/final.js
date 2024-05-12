@@ -6,6 +6,7 @@ const totalAcertadas = document.querySelector("#total-acertadas");
 const totalNoAcertadas = document.querySelector("#total-no-acertadas");
 const btnComenzar = document.querySelector("#btn-comenzar");
 const btnDescuento = document.querySelector("#btn-descuento");
+const displayCodigo = document.querySelector("#codigo-descuento");
 
 nombre.textContent = localStorage.getItem("nombre");
 nombreJugador.textContent = localStorage.getItem("nombre");
@@ -23,7 +24,8 @@ btnComenzar.addEventListener("click", () => {
 
 btnDescuento.addEventListener("click", () => {
     const codigo = generarCodigoDescuento(8);
-    alert("Tu código de descuento es: " + codigo);
+    displayCodigo.textContent = "Tu código de descuento es: " + codigo;
+    displayCodigo.style.display = "block";
 });
 
 function generarCodigoDescuento(length) {
@@ -35,7 +37,3 @@ function generarCodigoDescuento(length) {
     }
     return result;
 }
-
-
-
-
