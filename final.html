@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/estilo.css">
     <title>Game Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Asegúrate de incluir Chart.js -->
 </head>
 <body>
     <div class="container">
@@ -33,6 +34,13 @@
 
             <h2>ACERTADAS: <span id="total-acertadas" class="final-score">20</span></h2>
             <h2>INCORRECTAS: <span id="total-no-acertadas" class="final-score">5</span></h2>
+
+            <!-- Sección de Premios -->
+            <div class="premios">
+                <h3>Tus Premios</h3>
+                <canvas id="premiosChart"></canvas>
+            </div>
+
             <button class="btn" id="btn-comenzar">Comenzar de Nuevo</button>
         </main>
     </div>
