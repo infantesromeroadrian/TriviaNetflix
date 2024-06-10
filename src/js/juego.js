@@ -1,4 +1,3 @@
-//tomamos los elementos html
 const txtPuntaje = document.querySelector("#puntos");
 const nombre = document.querySelector("#nombre");
 
@@ -6,11 +5,11 @@ nombre.innerHTML = localStorage.getItem("nombre");
 let numPreguntaActual = 0;
 let preguntasCategoria = []; // Almacenar las preguntas cargadas
 
-//Recupero el puntaje en caso que ya esté jugando
+// Recupero el puntaje en caso de que ya esté jugando
 let puntajeTotal = 0;
 if (!localStorage.getItem("puntaje-total")) {
     puntajeTotal = 0;
-    txtPuntaje.innerHTML = puntajeTotal
+    txtPuntaje.innerHTML = puntajeTotal;
 } else {
     puntajeTotal = parseInt(localStorage.getItem("puntaje-total"));
     txtPuntaje.innerHTML = puntajeTotal;
@@ -19,16 +18,32 @@ if (!localStorage.getItem("puntaje-total")) {
 // Cargar las preguntas del tema que eligió desde un archivo JSON
 const categoriaActual = localStorage.getItem("categoria-actual");
 
-fetch('data/preguntas.json')
-    .then(response => response.json())
+fetch("./resources/netflix_preguntas.json") // nueva ruta para ver en el deploy
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log("Preguntas cargadas:", data);
         preguntasCategoria = data.filter(pregunta => pregunta.categoria === categoriaActual);
-        cargarSiguientePregunta(numPreguntaActual);
+        if (preguntasCategoria.length === 0) {
+            console.error('No se encontraron preguntas para la categoría:', categoriaActual);
+        } else {
+            cargarSiguientePregunta(numPreguntaActual);
+        }
     })
     .catch(error => console.error('Error al cargar las preguntas:', error));
 
+
 function cargarSiguientePregunta(num) {
-    //tomo los elementos donde se cargaran los datos de la pregunta
+    if (num >= preguntasCategoria.length) {
+        console.error('No hay más preguntas disponibles');
+        return;
+    }
+
+    // Tomo los elementos donde se cargarán los datos de la pregunta
     const numPregunta = document.querySelector("#num-pregunta");
     const txtPregunta = document.querySelector("#txt-pregunta");
     const opcionA = document.querySelector("#a");
@@ -43,7 +58,7 @@ function cargarSiguientePregunta(num) {
     opcionC.innerHTML = preguntasCategoria[num].opcionC;
     opcionD.innerHTML = preguntasCategoria[num].opcionD;
 
-    // Agrego un eventlistener a cada boton de respuesta
+    // Agrego un eventlistener a cada botón de respuesta
     const botonesRespuesta = document.querySelectorAll(".opcion");
     // Quito los eventListen y las clases
     botonesRespuesta.forEach(opcion => {
@@ -64,7 +79,7 @@ function agregarEventListenerBoton(e) {
     console.log(e.currentTarget.id);
     console.log(numPreguntaActual);
     console.log(preguntasCategoria[numPreguntaActual].correcta);
-    //Controlo si la respuesta es correcta
+    // Controlo si la respuesta es correcta
     if (e.currentTarget.id === preguntasCategoria[numPreguntaActual].correcta) {
         e.currentTarget.classList.add("correcta");
         puntajeTotal = puntajeTotal + 1;
@@ -76,10 +91,10 @@ function agregarEventListenerBoton(e) {
         const correcta = document.querySelector("#" + preguntasCategoria[numPreguntaActual].correcta);
         correcta.classList.add("correcta");
     }
-    //Agrego un eventlistener a cada boton de respuesta
+    // Agrego un eventlistener a cada botón de respuesta
     const botonesRespuesta = document.querySelectorAll(".opcion");
-    //Quito los eventListen para que no pueda seguir haciendo clic
-    console.log(botonesRespuesta)
+    // Quito los eventListen para que no pueda seguir haciendo clic
+    console.log(botonesRespuesta);
     botonesRespuesta.forEach(opcion => {
         opcion.classList.add("no-events");
     });
@@ -88,7 +103,7 @@ function agregarEventListenerBoton(e) {
 const btnSiguiente = document.querySelector("#siguiente");
 btnSiguiente.addEventListener("click", () => {
     numPreguntaActual++;
-    if (numPreguntaActual <= 4) {
+    if (numPreguntaActual < preguntasCategoria.length) {
         cargarSiguientePregunta(numPreguntaActual);
     } else {
         const categoriasJugadasLS = JSON.parse(localStorage.getItem("categorias-jugadas"));
@@ -99,7 +114,5 @@ btnSiguiente.addEventListener("click", () => {
         } else {
             location.href = "final.html";
         }
-
     }
-
 });
